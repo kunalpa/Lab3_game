@@ -12,6 +12,7 @@ window.onload = function () {
     }
 
     function update_model() {
+        model.squid.handleInput();
         model.updatePositions();
     }
 

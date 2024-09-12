@@ -4,28 +4,51 @@ class Squidward extends GameObject {
         this.x_next = 0;
         this.y_next = 0;
         this.speed = 5;
+        this.keys = {};
+        
+        this.registerKeyEvents();
     }
 
-    setGame() {
-        this.x = Math.floor(this.canvas.width / 2);
-        this.y = Math.floor(this.canvas.height / 2);
-        var dx = Math.max(5e-300, Math.random());
-        var dy = Math.max(5e-300, Math.random());
-        var angle = Math.atan(dy/dx);
-        this.x_next = Math.cos(angle) * this.speed;
-        this.y_next = Math.sin(angle) * this.speed;
+    registerKeyEvents() {
+        window.addEventListener('keydown', (event) => {
+            this.keys[event.key] = true;
+        });
 
+        window.addEventListener('keyup', (event) => {
+            this.keys[event.key] = false;
+        });
     }
 
-    updatePosition() {
-        // will change this in the game
-        if(this.x + this.x_next >= this.canvas.width - 90 || this.x + this.x_next < 0) {
-            this.x_next = -this.x_next;
+    // Asynchronously update position based on user input
+    async handleInput() {
+        if (this.keys['ArrowUp']) {
+            this.y_next = -this.speed;
         }
-        if(this.y + this.y_next >= this.canvas.height - 90 || this.y + this.y_next < 0) {
-            this.y_next = -this.y_next;
+        if (this.keys['ArrowDown']) {
+            this.y_next = this.speed;
         }
-        this.x += this.x_next;
-        this.y += this.y_next;
+        if (this.keys['ArrowLeft']) {
+            this.x_next = -this.speed;
+        }
+        if (this.keys['ArrowRight']) {
+            this.x_next = this.speed;
+        }
+        // No key pressed, reset movement
+        if (!this.keys['ArrowUp'] && !this.keys['ArrowDown']) {
+            this.y_next = 0;
+        }
+        if (!this.keys['ArrowLeft'] && !this.keys['ArrowRight']) {
+            this.x_next = 0;
+        }
+        await this.updatePosition();
+    }
+
+    async updatePosition() {
+        if (this.x + this.x_next >= 0 && this.x + this.x_next <= this.canvas.width - this.width) {
+            this.x += this.x_next;
+        }
+        if (this.y + this.y_next >= 0 && this.y + this.y_next <= this.canvas.height - this.height) {
+            this.y += this.y_next;
+        }
     }
 }
