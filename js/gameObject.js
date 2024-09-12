@@ -55,7 +55,7 @@ class GameObject {
     }
 
     setGame(){
-        this.x = Math.random() * this.canvas.width;
-        this.y = Math.random() * this.canvas.height;
+        this.x = Math.random() * (this.canvas.width-300);
+        this.y = Math.random() * (this.canvas.height-110);
     }
 }
