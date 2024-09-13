@@ -6,7 +6,7 @@ class Model {
         this.enemies = [];
         this.current_time = 0;
         this.previous_time = 0;
-        this.timeDelay = 200;  // delay before new enemies are added
+        this.time_delay = 200;  // delay before new enemies are added
         this.game_over = false;
         this.high_score = 0;
         this.loadObjects();
@@ -53,7 +53,7 @@ class Model {
         this.current_time++;
         this.updateScoreDisplay();
 
-        if (this.current_time - this.previous_time > this.timeDelay) {
+        if (this.current_time - this.previous_time > this.time_delay) {
             this.previous_time = this.current_time;
             if (Math.random() < 0.5) {
                 this.enemies.push(new Spongebob(this.canvas, this.squid));
