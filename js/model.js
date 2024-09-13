@@ -42,7 +42,7 @@ class Model {
 
     loadImages() {
         this.heart_img = new Image();
-        this.heart_img.src = '../assets/images/heart.png';
+        this.heart_img.src = '../resources/images/heart.png';
     }
 
     updatePositions() {
