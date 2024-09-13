@@ -16,4 +16,4 @@ A super simple game where a user controls Squidward via the arrow keys and tries
 
 
 ### Demo
-![](./assets/simulation/game_vid.gif)
+![](./resources/simulation/game_vid.gif)
