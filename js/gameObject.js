@@ -1,9 +1,9 @@
 class GameObject {
-    constructor(imageSrc, canvas, squid_ref=NaN) {
+    constructor(image_src, canvas, squid_ref=NaN) {
         this.x;
         this.y;
         this.image = new Image();
-        this.image.src = imageSrc;
+        this.image.src = image_src;
         this.canvas = canvas;
         this.squid_ref = squid_ref;
         this.speed = 2;
@@ -45,17 +45,17 @@ class GameObject {
         }
     }
 
-    checkCollision(otherObject, threshold=60) {
+    checkCollision(other_object, threshold=60) {
         // if the object is within the threshold distance return false
         const distance = Math.sqrt(
-            Math.pow(this.x - otherObject.x, 2) +
-            Math.pow(this.y - otherObject.y, 2)
+            Math.pow(this.x - other_object.x, 2) +
+            Math.pow(this.y - other_object.y, 2)
         );
         return distance < threshold; // Collision threshold
     }
 
     setGame(){
-        this.x = Math.random() * (this.canvas.width-300);
+        this.x = Math.random() * (this.canvas.width-20);
         this.y = Math.random() * (this.canvas.height-110);
     }
 }

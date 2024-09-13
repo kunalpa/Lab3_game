@@ -4,34 +4,34 @@ class Model {
         this.hearts = 3;
         this.squid;
         this.enemies = [];
-        this.currentTime = 0;
-        this.previousTime = 0;
+        this.current_time = 0;
+        this.previous_time = 0;
         this.timeDelay = 200;  // delay before new enemies are added
-        this.gameOver = false;
-        this.highScore = 0;
+        this.game_over = false;
+        this.high_score = 0;
         this.loadObjects();
         this.restartGame();
         this.loadImages();
 
-        this.restartButton = document.getElementById("restartButton");
-        this.scoreDisplay;
-        this.highScoreDisplay;
-        this.setupRestartButton();
+        this.restart_button = document.getElementById("restart_button");
+        this.score_display;
+        this.high_score_display;
+        this.setuprestart_button();
     }
 
-    setupRestartButton() {
-        this.restartButton.addEventListener('click', () => {
+    setuprestart_button() {
+        this.restart_button.addEventListener('click', () => {
             this.restartGame();
-            this.hideRestartButton();
+            this.hiderestart_button();
         });
     }
 
-    showRestartButton() {
-        this.restartButton.style.display = "block";
+    showrestart_button() {
+        this.restart_button.style.display = "block";
     }
 
-    hideRestartButton() {
-        this.restartButton.style.display = "none";
+    hiderestart_button() {
+        this.restart_button.style.display = "none";
     }
 
     loadObjects() {
@@ -41,20 +41,20 @@ class Model {
     }
 
     loadImages() {
-        this.heartImg = new Image();
-        this.heartImg.src = '../assets/images/heart.png';
+        this.heart_img = new Image();
+        this.heart_img.src = '../resources/images/heart.png';
     }
 
     updatePositions() {
-        if (this.gameOver) {
+        if (this.game_over) {
             return;
         }
 
-        this.currentTime++;
+        this.current_time++;
         this.updateScoreDisplay();
 
-        if (this.currentTime - this.previousTime > this.timeDelay) {
-            this.previousTime = this.currentTime;
+        if (this.current_time - this.previous_time > this.timeDelay) {
+            this.previous_time = this.current_time;
             if (Math.random() < 0.5) {
                 this.enemies.push(new Spongebob(this.canvas, this.squid));
             } else {
@@ -74,8 +74,8 @@ class Model {
             if (this.enemies[i].checkCollision(this.squid)) {
                 this.hearts--;
                 if (this.hearts <= 0) {
-                    this.gameOver = true;
-                    this.showRestartButton();
+                    this.game_over = true;
+                    this.showrestart_button();
                     return;
                 }
                 this.resetGame();
@@ -84,22 +84,22 @@ class Model {
     }
 
     updateScoreDisplay() {
-        if (this.scoreDisplay == null) {
-            this.scoreDisplay = document.getElementById('scoreDisplay');
+        if (this.score_display == null) {
+            this.score_display = document.getElementById('score_display');
         }
-        this.scoreDisplay.innerHTML = `Score: ${Math.round(this.currentTime/5)}`;
+        this.score_display.innerHTML = `Score: ${Math.round(this.current_time/5)}`;
     }
 
-    updateHighScoreDisplay() {
-        this.highScore = Math.max(this.highScore, Math.round(this.currentTime/5));
-        if (this.highScoreDisplay == null) {
-            this.highScoreDisplay = document.getElementById('highScoreDisplay');
+    updatehighScoreDisplay() {
+        this.high_score = Math.max(this.high_score, Math.round(this.current_time/5));
+        if (this.high_score_display == null) {
+            this.high_score_display = document.getElementById('high_score_display');
         }
-        this.highScoreDisplay.innerHTML = `High Score: ${this.highScore}`;
+        this.high_score_display.innerHTML = `High Score: ${this.high_score}`;
     }
 
     resetGame() {
-        this.previousTime = this.currentTime;
+        this.previous_time = this.current_time;
         this.squid.setGame();
         this.enemies = this.enemies.slice(0, 2);
         for (let i = 0; i < this.enemies.length; i++) {
@@ -112,10 +112,10 @@ class Model {
 
     restartGame() {
         this.resetGame();
-        this.gameOver = false;
-        this.updateHighScoreDisplay();
-        this.currentTime = 0;
-        this.previousTime = 0;
+        this.game_over = false;
+        this.updatehighScoreDisplay();
+        this.current_time = 0;
+        this.previous_time = 0;
         this.hearts = 3;
         this.updateScoreDisplay(); // Reset the score display
     }

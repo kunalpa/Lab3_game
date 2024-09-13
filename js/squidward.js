@@ -1,6 +1,6 @@
 class Squidward extends GameObject {
     constructor(canvas) {
-        super('../assets/images/squid.png', canvas);
+        super('../resources/images/squid.png', canvas);
         this.x_next = 0;
         this.y_next = 0;
         this.speed = 5;
