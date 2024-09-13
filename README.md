@@ -1,6 +1,6 @@
 # Lab3
 
-A super simple game where a user controls Squidward and tries to evade Spongebob and Patrick. Every time Spongebob and Patrick collide with Squidward, he loses a life displayed in the top right corner of the screen. Spongebobs and Patricks will randomly spawn on the screen at a fixed interval ready to give Squidward more trouble.
+A super simple game where a user controls Squidward via the arrow keys and tries to evade Spongebob and Patrick. Every time Spongebob and Patrick collide with Squidward, he loses a life displayed in the top right corner of the screen. Spongebobs and Patricks will randomly spawn on the screen at a fixed interval ready to give Squidward more trouble.
 
 ### Project Structure
 * This project utilizes an MVC structure.
@@ -13,3 +13,7 @@ A super simple game where a user controls Squidward and tries to evade Spongebob
 * Patrick: https://www.pinterest.com/pin/3237030968199150/
 * Spongebob: https://www.pinterest.com/pin/140806232262981/
 * Squidward: https://www.pinterest.com/pin/404198135323333043/
+
+
+### Demo
+![](./assets/simulation/game_vid.gif)

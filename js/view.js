@@ -15,8 +15,8 @@ class View {
 
         // Draw Hearts
         for (let i=0; i<model.hearts; i++) {
-            const heartSize = {x: 40, y: 50};
-            this.context.drawImage(model.heartImg, this.canvas.width - (1+i) * heartSize.x, 10, heartSize.x, heartSize.y);
+            const heart_size = {x: 40, y: 50};
+            this.context.drawImage(model.heart_img, this.canvas.width - (1+i) * heart_size.x, 10, heart_size.x, heart_size.y);
         }
     }
 }

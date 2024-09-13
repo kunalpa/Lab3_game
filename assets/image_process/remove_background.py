@@ -5,7 +5,7 @@ import numpy as np
 '''
 Takes an image and runs a dfs on the four corners to remove white-ish backgrounds.
 '''
-def remove_outline(pixel_matrix, x, y):
+def removeOutline(pixel_matrix, x, y):
     point_stack = [[0, 0], [y-1, x-1], [0, x-1], [y-1, 0]]
     while point_stack:
         row, col = point_stack.pop()
@@ -13,7 +13,6 @@ def remove_outline(pixel_matrix, x, y):
             continue
         pixels = pixel_matrix[row,col]
         if pixels[0] > 200 and pixels[1] > 200 and pixels[2] > 200 and pixels[3] != 0:
-            # we have found a whitespace
             point_stack.append([row+1, col])
             point_stack.append([row-1, col])
             point_stack.append([row, col+1])
@@ -36,7 +35,7 @@ def convertImage(file_name):
             pixel_matrix[i, j] = (r, g, b, a)
 
     # run dfs to remove connected whitepixels outside of character
-    remove_outline(pixel_matrix, x, y)
+    removeOutline(pixel_matrix, x, y)
 
     # convert back to np array that can be converted to a new image
     squashed_image = np.zeros((n, m, 4), dtype=np.uint8)
