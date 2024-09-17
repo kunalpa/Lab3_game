@@ -10,16 +10,20 @@ class Squidward extends GameObject {
     }
 
     registerKeyEvents() {
-        window.addEventListener('keydown', (event) => {
-            this.keys[event.key] = true;
-        });
-
-        window.addEventListener('keyup', (event) => {
-            this.keys[event.key] = false;
-        });
+        // callback events are called here
+        window.addEventListener('keydown', (event) => this.keydown(event));
+        window.addEventListener('keyup', (event) => this.keyup(event));
     }
 
-    // Asynchronously update position based on user input
+    // callbacks are defined here
+    keydown(e) {
+        this.keys[e.key] = true;
+    }
+    keyup(e) {
+        this.keys[e.key] = false;
+    }
+
+    // Asynchronously update position based on input
     async handleInput() {
         if (this.keys['ArrowUp']) {
             this.y_next = -this.speed;
@@ -33,7 +37,7 @@ class Squidward extends GameObject {
         if (this.keys['ArrowRight']) {
             this.x_next = this.speed;
         }
-        // No key pressed, reset movement
+        // stop squidward if nothing is pressed
         if (!this.keys['ArrowUp'] && !this.keys['ArrowDown']) {
             this.y_next = 0;
         }
@@ -51,4 +55,11 @@ class Squidward extends GameObject {
             this.y += this.y_next;
         }
     }
+
+    setGame() {
+        this.x = this.canvas.width / 2;
+        this.y = this.canvas.height / 2;
+    }
+
+
 }
