@@ -6,6 +6,7 @@ A super simple game where a user controls Squidward via the arrow keys and tries
 * This project utilizes an MVC structure.
 * The code follows a hierarchical design in that specific objects descend from the larger MVC.
 * One part of this project that I was particularly proud of was the logic I implemented to remove the background of a given image using Python. This script takes the four corners of an image and runs an iterative dfs on them removing all connected pixels that appear white. These new images were used in the simulation.
+* I also established fixed-time step variable rendering, and allowed me to simulate the game on weaker machines.
 
 ### Sources:
 * Background: https://www.pinterest.com/pin/152770612353513561/
